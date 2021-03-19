@@ -3,9 +3,10 @@ package projet;
 public class Personnage {
 	private String name = "";
 	private int hp = 10;
-	private int inventaire = 10;
-	private int i = 9;
-	private int j = 6;
+	private int inventaire = 0;
+	private int i = (int) (Math.random()*(15));
+	private int j = (int) (Math.random()*(15));
+	private String[][]mapJoueur = new String[15][15];
 	
 	Donjon d = new Donjon();
 	
@@ -80,12 +81,17 @@ public class Personnage {
 	}
 	
 	public void utiliser() {
-		if(this.inventaire != 0) {
+		if(this.inventaire != 0 && this.getHp()<10) {
 			this.setHp(this.getHp()+1);
 			this.setInventaire(this.getInventaire()-1);
 			System.out.println("Potion utilisee.");
 		} else {
-			System.err.println("L'inventaire est vide.");
+			if(this.inventaire == 0) {
+				System.err.println("L'inventaire est vide.");
+			}else {
+				System.err.println("Il ne manque aucun point de vie.");
+			}
+			
 		}
 	}
 	
@@ -127,12 +133,31 @@ public class Personnage {
 		}
 	}
 	
-	public Donjon AffichageMap() {
+	public String AffichageMap() {
 		for(int i = 0; i< 15; i++) {
  			for(int j = 0; j < 15; j++) {
- 				d.getMap()[i][j]="?";
+ 				mapJoueur[i][j]="?";
  			}
  		}
+		
+		
+		for(int i = 0; i< 15; i++) {
+ 			for(int j = 0; j < 15; j++) {
+ 				if(mapJoueur[i][j].equals("O")) {
+ 					mapJoueur[i][j]=" ";
+ 				}
+ 			}
+ 		}
+		mapJoueur[this.getI()][this.getJ()]="O";
+		
+		String r = "";
+ 		for (int i = 0; i < 15; i++) {
+ 			for(int j = 0; j<15;j++) {
+ 				r += mapJoueur[i][j];
+ 			}
+ 			r+="\n";
+ 		}
+ 		return r;
 		
 	}
 	

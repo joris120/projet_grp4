@@ -16,12 +16,15 @@ public class Test {
  		Scanner sc = new Scanner(System.in);
  		
  		while(d.getMap()[p.getI()][p.getJ()] != "V") {
- 			System.out.println("A votre tour");
- 	 		p.deplacer(sc.nextLine());
- 	 		if(sc.nextLine().equals("u")) {
+ 			System.out.println(p.AffichageMap());
+ 			System.out.println("A votre tour :");
+ 			String k = sc.nextLine();
+ 			if(k.equals("z")||k.equals("q")||k.equals("s")||k.equals("d")) {
+ 				p.deplacer(sc.nextLine());
+ 			}else if(k.equals("u")) {
  	 			p.utiliser();
  	 		}
- 	 		System.out.println(p);
+ 	 		
  	 		
  		}
  		
