@@ -99,37 +99,38 @@ public class Personnage {
 		boolean b = true;
 		while(b) {
 			if(r.equals("z")) {
-				if(j == 0) {
-					System.err.println("deplacement impossible");
-				}else {
-					j-=1;
-					b = false;
-				}
-			}else if(r.equals("q")) {
 				if(i == 0) {
 					System.err.println("deplacement impossible");
-				} else {
+				}else {
 					i-=1;
 					b = false;
 				}
+			}else if(r.equals("q")) {
+				if(j == 0) {
+					System.err.println("deplacement impossible");
+				} else {
+					j-=1;
+					b = false;
+				}
 			}else if(r.equals("s")) {
-				if(j == 14) {
+				if(i == 14) {
 					System.err.println("deplacement impossible");
 				}else {
-					j+=1;
+					i+=1;
 					b = false;
 				}
 			} else {
-				if(i == 14) {
+				if(j == 14) {
 					System.err.println("deplacement impossible");
 				} else {
-					i += 1;
+					j += 1;
 					b = false;
 				}
 			}
-			if(d.getMap()[i][j].equals("~")) {
-				this.setHp(this.getHp()-1);
-			}
+			
+		}
+		if(d.getMap()[i][j].equals("~")) {
+			this.setHp(this.getHp()-1);
 		}
 	}
 	

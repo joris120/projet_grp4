@@ -17,10 +17,11 @@ public class Test {
  		
  		while(d.getMap()[p.getI()][p.getJ()] != "V") {
  			System.out.println(p.AffichageMap());
+ 			System.out.println(p.getHp());
  			System.out.println("A votre tour :");
  			String k = sc.nextLine();
  			if(k.equals("z")||k.equals("q")||k.equals("s")||k.equals("d")) {
- 				p.deplacer(sc.nextLine());
+ 				p.deplacer(k);
  			}else if(k.equals("u")) {
  	 			p.utiliser();
  	 		}
