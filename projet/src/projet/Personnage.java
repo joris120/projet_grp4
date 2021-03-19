@@ -1,35 +1,36 @@
 package projet;
 
 public class Personnage {
+	private String name = "";
 	private int hp = 10;
 	private int inventaire = 10;
 	private int i = 9;
 	private int j = 6;
-	private String[][]mapObjet = new String[15][15];
 	
-	public Personnage(int n) {
-		for(int i = 0; i< 15; i++) {
- 			for(int j = 0; j < 15; j++) {
- 				mapObjet[i][j]=",";
- 			}
- 		}
- 		for(int i = 0; i< 4; i++) {
- 			for(int j = 0; j < 4; j++) {
- 				if(mapObjet[i][j].equals(",")) {
- 					mapObjet[(int) (Math.random()*(15))][(int) (Math.random()*(15))]="~";
- 				}
- 				if(mapObjet[i][j].equals(",")) {
- 					mapObjet[(int) (Math.random()*(15))][(int) (Math.random()*(15))]="P";
- 				}
- 				if(mapObjet[i][j].equals(",")) {
- 					mapObjet[(int) (Math.random()*(15))][(int) (Math.random()*(15))]="#";
- 				}
- 			}
- 		}
-
- 		mapObjet[(int) (Math.random()*(15))][(int) (Math.random()*(15))]="V";
+	Donjon d = new Donjon();
+	
+	public Personnage(String name) {
+		setName(name);
 	}
 	
+	public String getName() {
+		return name;
+	}
+	
+	public int getI() {
+		return i;
+	}
+	public int getJ() {
+		return j;
+	}
+	
+	public void setName(String name) {
+		if(name != null) {
+			this.name = name;
+		} else {
+			System.err.println("Nom invalide");
+		}
+	}
 	
 	public int getHp() {
 		return hp;
@@ -54,20 +55,20 @@ public class Personnage {
 	}
 	
 	public void ramasser() {
-		if(inventaire < 5 && mapObjet[i][j].equals("P")) {
+		if(inventaire < 5 && d.getMap()[i][j].equals("P")) {
 			inventaire += 1;
 			for(int i = 0; i< 1; i++) {
 	 			for(int j = 0; j < 1; j++) {
 	 				boolean b = true;
 	 				while(b) {
-	 					if(mapObjet[i][j].equals(",")&&b) {
-	 	 					mapObjet[(int) (Math.random()*(15))][(int) (Math.random()*(15))]="P";
+	 					if(d.getMap()[i][j].equals(",")&&b) {
+	 						d.getMap()[(int) (Math.random()*(15))][(int) (Math.random()*(15))]="P";
 	 	 					b = false;
 	 	 				}
 	 				}
 	 			}
 	 		}
-			mapObjet[i][j]=",";
+			d.getMap()[i][j]=",";
 		} else {
 			if(inventaire >=5) {
 				System.err.println("L'inventaire est déjà plein.");
@@ -120,17 +121,24 @@ public class Personnage {
 					b = false;
 				}
 			}
+			if(d.getMap()[i][j].equals("~")) {
+				this.setHp(this.getHp()-1);
+			}
 		}
+	}
+	
+	public Donjon AffichageMap() {
+		for(int i = 0; i< 15; i++) {
+ 			for(int j = 0; j < 15; j++) {
+ 				d.getMap()[i][j]="?";
+ 			}
+ 		}
+		
 	}
 	
 	public String toString() {
  		String r = "";
- 		for (int i = 0; i < 15; i++) {
- 			for(int j = 0; j<15;j++) {
- 				r += mapObjet[i][j];
- 			}
- 			r+="\n";
- 		}
+ 		r+= this.getName() + " a "+ this.getHp()+" points de vie.";
  		return r;
  	}
 	
