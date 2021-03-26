@@ -8,16 +8,12 @@ public class Test {
 		Donjon d = new Donjon();
  		System.out.println(d);
  		Personnage p = new Personnage("test");
- 		System.out.println(p);
- 		p.ramasser();
- 		System.out.println(p.getInventaire());
  		
  		
  		Scanner sc = new Scanner(System.in);
  		
  		while(d.getMap()[p.getI()][p.getJ()] != "V") {
  			System.out.println(p.AffichageMap());
- 			System.out.println(p.getHp());
  			System.out.println("A votre tour :");
  			String k = sc.nextLine();
  			if(k.equals("z")||k.equals("q")||k.equals("s")||k.equals("d")) {
@@ -28,6 +24,7 @@ public class Test {
  	 		
  	 		
  		}
+ 		System.out.println("gagne !");
  		
 	}
 	

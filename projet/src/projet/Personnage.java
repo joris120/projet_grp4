@@ -12,6 +12,12 @@ public class Personnage {
 	
 	public Personnage(String name) {
 		setName(name);
+		for(int i = 0; i< 15; i++) {
+ 			for(int j = 0; j < 15; j++) {
+ 				mapJoueur[i][j]="?";
+ 			}
+ 		}
+		mapJoueur[this.getI()][this.getJ()]="X";
 	}
 	
 	public String getName() {
@@ -31,6 +37,9 @@ public class Personnage {
 		} else {
 			System.err.println("Nom invalide");
 		}
+	}
+	public String[][] getMap() {
+		return mapJoueur;
 	}
 	
 	public int getHp() {
@@ -135,21 +144,18 @@ public class Personnage {
 	}
 	
 	public String AffichageMap() {
-		for(int i = 0; i< 15; i++) {
- 			for(int j = 0; j < 15; j++) {
- 				mapJoueur[i][j]="?";
- 			}
- 		}
 		
-		
-		for(int i = 0; i< 15; i++) {
- 			for(int j = 0; j < 15; j++) {
- 				if(mapJoueur[i][j].equals("O")) {
- 					mapJoueur[i][j]=" ";
+		this.getMap()[this.getI()][this.getJ()]="X";
+		for (int i = 0; i < 15; i++) {
+ 			for(int j = 0; j<15;j++) {
+ 				if(this.getMap()[i][j].equals("X") && (i!=this.getI()|| j!=this.getJ())) {
+ 					
+ 						this.getMap()[i][j] = " ";
+ 					
+ 					
  				}
  			}
  		}
-		mapJoueur[this.getI()][this.getJ()]="O";
 		
 		String r = "";
  		for (int i = 0; i < 15; i++) {
