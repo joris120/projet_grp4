@@ -12,7 +12,7 @@ public class Test {
  		
  		Scanner sc = new Scanner(System.in);
  		
- 		while(d.getMap()[p.getI()][p.getJ()] != "V") {
+ 		while(!(d.getMap()[p.getI()][p.getJ()].equals("V"))) {
  			System.out.println(p.AffichageMap());
  			System.out.println("A votre tour :");
  			String k = sc.nextLine();
@@ -20,6 +20,9 @@ public class Test {
  				p.deplacer(k);
  			}else if(k.equals("u")) {
  	 			p.utiliser();
+ 	 		}else if(k.equals("r")) {
+ 	 			p.ramasser();
+ 	 			System.out.println(p.AffichageMap());
  	 		}
  	 		
  	 		

@@ -79,6 +79,7 @@ public class Personnage {
 	 			}
 	 		}
 			d.getMap()[i][j]=",";
+			System.out.println("Potion ramassee.");
 		} else {
 			if(inventaire >=5) {
 				System.err.println("L'inventaire est déjà plein.");
@@ -93,7 +94,7 @@ public class Personnage {
 		if(this.inventaire != 0 && this.getHp()<10) {
 			this.setHp(this.getHp()+1);
 			this.setInventaire(this.getInventaire()-1);
-			System.out.println("Potion utilisee.");
+			System.out.println("Potion utilisee. vous avez "+this.getHp()+" pv.");
 		} else {
 			if(this.inventaire == 0) {
 				System.err.println("L'inventaire est vide.");
@@ -105,42 +106,55 @@ public class Personnage {
 	}
 	
 	public void deplacer(String r) {
-		boolean b = true;
-		while(b) {
-			if(r.equals("z")) {
-				if(i == 0) {
-					System.err.println("deplacement impossible");
-				}else {
-					i-=1;
-					b = false;
-				}
-			}else if(r.equals("q")) {
-				if(j == 0) {
-					System.err.println("deplacement impossible");
+			int k = this.getI();
+			int l = this.getJ();
+			boolean b = true;
+			while(b) {
+				if(r.equals("z")) {
+					if(i == 0) {
+						System.err.println("deplacement impossible");
+						b = false;
+					}else {
+						i-=1;
+						b = false;
+					}
+				}else if(r.equals("q")) {
+					if(j == 0) {
+						System.err.println("deplacement impossible");
+						b = false;
+					} else {
+						j-=1;
+						b = false;
+					}
+				}else if(r.equals("s")) {
+					if(i == 14) {
+						System.err.println("deplacement impossible");
+						b = false;
+					}else {
+						i+=1;
+						b = false;
+					}
 				} else {
-					j-=1;
-					b = false;
+					if(j == 14) {
+						System.err.println("deplacement impossible");
+						b = false;
+					} else {
+						j += 1;
+						b = false;
+					}
 				}
-			}else if(r.equals("s")) {
-				if(i == 14) {
-					System.err.println("deplacement impossible");
-				}else {
-					i+=1;
-					b = false;
-				}
-			} else {
-				if(j == 14) {
-					System.err.println("deplacement impossible");
-				} else {
-					j += 1;
-					b = false;
-				}
+				
 			}
-			
-		}
-		if(d.getMap()[i][j].equals("~")) {
-			this.setHp(this.getHp()-1);
-		}
+			if(d.getMap()[this.getI()][this.getJ()].equals("~")) {
+				this.setHp(this.getHp()-1);
+				System.out.println("vous avez : " + this.getHp()+ " pv");
+			} else if(d.getMap()[this.getI()][this.getJ()].equals("#")) {
+				this.getMap()[this.getI()][this.getJ()]="#";
+				i =k;
+				j=l;
+				System.err.println("il y a un mur");
+			}
+		
 	}
 	
 	public String AffichageMap() {
@@ -149,10 +163,12 @@ public class Personnage {
 		for (int i = 0; i < 15; i++) {
  			for(int j = 0; j<15;j++) {
  				if(this.getMap()[i][j].equals("X") && (i!=this.getI()|| j!=this.getJ())) {
- 					
+ 					if(d.getMap()[i][j].equals(",")) {
  						this.getMap()[i][j] = " ";
- 					
- 					
+ 					}else {
+ 						this.getMap()[i][j] = d.getMap()[i][j];
+ 					}
+ 						
  				}
  			}
  		}
