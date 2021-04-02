@@ -14,9 +14,9 @@ public class Client {
 	private static PrintStream out;
 	
 	public static void main (String [] args) throws UnknownHostException, IOException {
-		Socket socket= new Socket ("127.0.0.1", 6112);
+		Socket socket= new Socket ("127.0.0.1", 6113);
 		
-		System.out.println("Nouvelle partie.");
+		System.out.println("Client connecte");
 		
 		in = new BufferedReader (new InputStreamReader(socket.getInputStream()));
 		out = new PrintStream(socket.getOutputStream());

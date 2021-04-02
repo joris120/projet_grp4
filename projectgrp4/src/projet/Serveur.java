@@ -5,7 +5,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Serveur {
-private static int PORT = 6112;
+private static int PORT = 6113;
 	
 	public Serveur(){
 		
