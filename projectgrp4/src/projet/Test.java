@@ -11,7 +11,7 @@ public class Test {
  		
  		
  		Scanner sc = new Scanner(System.in);
- 		
+ 	
  		while(!(p.getGagne())) {
  			System.out.println(p.AffichageMap());
  			System.out.println("A votre tour :");
@@ -24,6 +24,7 @@ public class Test {
  	 		}else if(k.equals("r")) {
  	 			p.ramasser();
  	 		}
+ 			
  		}
 	}
 	
