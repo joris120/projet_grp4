@@ -25,7 +25,7 @@ public static void main (String [] args) throws UnknownHostException, IOExceptio
 		Scanner scanner = new Scanner (System.in);
 		
 		//lecture du message initial du serveur
-		System.out.println(in.readLine());
+		//System.out.println(in.readLine());
 		
 		//5 requêtes
 		for(int i=0;i<5;i++){
