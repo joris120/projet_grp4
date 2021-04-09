@@ -8,7 +8,7 @@ public class Serveur {
 private static int PORT = 6113;
 	
 	public Serveur(){
-		
+	
 	}
 	
 	public static void main(String[] args) {
@@ -16,7 +16,7 @@ private static int PORT = 6113;
 		System.out.println("Serveur démarré");
 		ServerSocket s = null;
 		try {
-			
+		
 			//Creation socket serveur
 			s = new ServerSocket(PORT);
 		}
@@ -29,7 +29,7 @@ private static int PORT = 6113;
 				//en attente d'une connexion avec un client:  
 				Socket client = s.accept();
 				clientNo++;
-				
+			
 				//création du nouveau thread en passant le socket comme parametre
 				ServeurJeu donjon = new ServeurJeu(client);
 				//démarrage 
@@ -39,9 +39,9 @@ private static int PORT = 6113;
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+		
 		}
-		
-		
-	}
+	
+	
+}
 }

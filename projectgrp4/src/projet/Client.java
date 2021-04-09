@@ -10,36 +10,32 @@ import java.util.Scanner;
 
 public class Client {
 	
-	private static BufferedReader in;
-	private static PrintStream out;
+private static BufferedReader in;
+private static PrintStream out;
 	
-	public static void main (String [] args) throws UnknownHostException, IOException {
+public static void main (String [] args) throws UnknownHostException, IOException, HpException {
 		Socket socket= new Socket ("127.0.0.1", 6113);
 		
-		System.out.println("Client connecte");
+		System.out.println("Bienvenue");
 		
 		in = new BufferedReader (new InputStreamReader(socket.getInputStream()));
 		out = new PrintStream(socket.getOutputStream());
-		Scanner sc = new Scanner (System.in);
 		
 		System.out.println(in.readLine());
+		Scanner scanner = new Scanner (System.in);
 		
-		Scanner nom = new Scanner(System.in);
+		//lecture du message initial du serveur
+		System.out.println(in.readLine());
 		
-		System.out.println("Saisissez votre nom :");
-		
-		Personnage p = new Personnage(nom.nextLine());
-		nom.close();
-		System.out.println("Bienvenue "+p.getName());
-		
-		while(!(p.getGagne())) {
-			System.out.println(p.AffichageMap());
- 			System.out.println("A votre tour :");
- 			String k = sc.nextLine();
+		//5 requêtes
+		for(int i=0;i<5;i++){
+			out.println(scanner.nextLine());
+			System.out.println(in.readLine());
 		}
 		
-		sc.close();
+		scanner.close();
 		socket.close();
+
 	}
 
 }
