@@ -24,15 +24,29 @@ public static void main (String [] args) throws UnknownHostException, IOExceptio
 		System.out.println(in.readLine());
 		Scanner scanner = new Scanner (System.in);
 		
-		//lecture du message initial du serveur
+		
+		Personnage p = new Personnage("test");
+		out.println(p.AffichageMap());
+		Scanner sc = new Scanner(System.in);
+		while(!(p.getGagne())) {
+		 	System.out.println(p.AffichageMap());
+		 	System.out.println("A votre tour :");
+		 	String k = sc.nextLine();
+		 	if(k.equals("z")||k.equals("q")||k.equals("s")||k.equals("d")) {
+		 		p.deplacer(k);
+		 		p.piege();
+		 		}else if(k.equals("u")) {
+		 	 		p.utiliser();
+		 	 	}else if(k.equals("r")) {
+		 	 		p.ramasser();
+		 	 	}	
+		 	}
+			sc.close();
+			
+			
+		out.println(scanner.nextLine());
 		System.out.println(in.readLine());
-		
-		//5 requêtes
-		for(int i=0;i<5;i++){
-			out.println(scanner.nextLine());
-			System.out.println(in.readLine());
-		}
-		
+			
 		scanner.close();
 		socket.close();
 
