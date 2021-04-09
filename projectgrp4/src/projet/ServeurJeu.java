@@ -25,17 +25,8 @@ public class ServeurJeu extends Thread {
 			
 			out = new PrintStream(socket.getOutputStream());
 			
-			//envoi du premier message
 			
-			
-			
-			//5 requêtes
 			for(int req=0;req<5;req++){
-				
-		
-				
-		
-				
 			}
 			socket.close();	
 			} catch (IOException e) {

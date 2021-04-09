@@ -21,11 +21,11 @@ public static void main (String [] args) throws UnknownHostException, IOExceptio
 		in = new BufferedReader (new InputStreamReader(socket.getInputStream()));
 		out = new PrintStream(socket.getOutputStream());
 		
-		System.out.println(in.readLine());
-		Scanner scanner = new Scanner (System.in);
 		
 		
-		Personnage p = new Personnage("test");
+		Personnage p = new Personnage();
+		
+		
 		out.println(p.AffichageMap());
 		Scanner sc = new Scanner(System.in);
 		while(!(p.getGagne())) {
@@ -42,13 +42,7 @@ public static void main (String [] args) throws UnknownHostException, IOExceptio
 		 	 	}	
 		 	}
 			sc.close();
-			
-			
-		out.println(scanner.nextLine());
-		System.out.println(in.readLine());
-			
-		scanner.close();
-		socket.close();
+			socket.close();
 
 	}
 

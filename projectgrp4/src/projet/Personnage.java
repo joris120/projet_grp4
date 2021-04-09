@@ -1,7 +1,6 @@
 package projet;
 
 public class Personnage {
-	private String name = "";
 	private int hp = 10;
 	private int inventaire = 0;
 	private int i = (int) (Math.random()*(15));
@@ -12,8 +11,7 @@ public class Personnage {
 	
 	Donjon d = new Donjon();
 	
-	public Personnage(String name) {
-		setName(name);
+	public Personnage() {
 		for(int i = 0; i< 15; i++) {
  			for(int j = 0; j < 15; j++) {
  				mapJoueur[i][j]="?";
@@ -29,10 +27,6 @@ public class Personnage {
 		this.gagne = b;
 	}
 	
-	public String getName() {
-		return name;
-	}
-	
 	public int getI() {
 		return i;
 	}
@@ -46,13 +40,6 @@ public class Personnage {
 		this.j = j;
 	}
 	
-	public void setName(String name) {
-		if(name != null) {
-			this.name = name;
-		} else {
-			System.err.println("Nom invalide");
-		}
-	}
 	public String[][] getMap() {
 		return mapJoueur;
 	}
@@ -219,7 +206,6 @@ public class Personnage {
 	
 	public String toString() {
  		String r = "";
- 		r+= this.getName() + " a "+ this.getHp()+" points de vie.";
  		return r;
  	}
 	
