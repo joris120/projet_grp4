@@ -21,24 +21,14 @@ public static void main (String [] args) throws UnknownHostException, IOExceptio
 		in = new BufferedReader (new InputStreamReader(socket.getInputStream()));
 		out = new PrintStream(socket.getOutputStream());
 
-		Personnage p = new Personnage();
-		
-		
-		out.println(p.AffichageMap());
+	
 		Scanner sc = new Scanner(System.in);
 		while(!(p.getGagne())) {
-		 	System.out.println(p.AffichageMap());
+		 	System.out.println(in.readLine());
 		 	System.out.println("A votre tour :");
 		 	String k = sc.nextLine();
-		 	if(k.equals("z")||k.equals("q")||k.equals("s")||k.equals("d")) {
-		 		p.deplacer(k);
-		 		p.piege();
-		 		}else if(k.equals("u")) {
-		 	 		p.utiliser();
-		 	 	}else if(k.equals("r")) {
-		 	 		p.ramasser();
-		 	 	}	
-		 	}
+		 	out.println(k);
+		 	
 			sc.close();
 			socket.close();
 
