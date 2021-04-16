@@ -23,18 +23,16 @@ private static int PORT = 6113;
 		catch(IOException e){
 			e.printStackTrace();
 		}
-		int clientNo=0;
 		while(true){
 			try {
 				//en attente d'une connexion avec un client:  
 				Socket client = s.accept();
-				clientNo++;
 			
 				//création du nouveau thread en passant le socket comme parametre
 				ServeurJeu donjon = new ServeurJeu(client);
 				//démarrage 
 				donjon.start();
-				System.out.println("client "+clientNo+" servi");
+				
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

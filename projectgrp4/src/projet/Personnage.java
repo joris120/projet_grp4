@@ -1,7 +1,6 @@
 package projet;
 
 public class Personnage {
-	private String name = "";
 	private int hp = 10;
 	private int inventaire = 0;
 	private int i = (int) (Math.random()*(15));
@@ -12,8 +11,7 @@ public class Personnage {
 	
 	Donjon d = new Donjon();
 	
-	public Personnage(String name) {
-		setName(name);
+	public Personnage() {
 		for(int i = 0; i< 15; i++) {
  			for(int j = 0; j < 15; j++) {
  				mapJoueur[i][j]="?";
@@ -29,10 +27,6 @@ public class Personnage {
 		this.gagne = b;
 	}
 	
-	public String getName() {
-		return name;
-	}
-	
 	public int getI() {
 		return i;
 	}
@@ -46,13 +40,7 @@ public class Personnage {
 		this.j = j;
 	}
 	
-	public void setName(String name) {
-		if(name != null) {
-			this.name = name;
-		} else {
-			System.err.println("Nom invalide");
-		}
-	}
+	
 	public String[][] getMap() {
 		return mapJoueur;
 	}
@@ -161,12 +149,7 @@ public class Personnage {
 				
 			}
 				
-			if(d.getMap()[this.getI()][this.getJ()].equals("#")) {
-				this.getMap()[this.getI()][this.getJ()]="#";
-				i =k;
-				j=l;
-				System.err.println("il y a un mur");
-			}
+			
 			if(d.getMap()[this.getI()][this.getJ()].equals("V")) {
 				this.setGagne(true);
 				System.out.println("Vous avez gagne !");
@@ -175,19 +158,36 @@ public class Personnage {
 		
 	}
 	
-	public void piege() throws HpException {
+	public boolean IlYAUnMur() {
+		int k = this.getI();
+		int l = this.getJ();
+		if(d.getMap()[this.getI()][this.getJ()].equals("#")) {
+			this.getMap()[this.getI()][this.getJ()]="#";
+			i =k;
+			j=l;
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean Piege() throws HpException {
 		if(d.getMap()[this.getI()][this.getJ()].equals("~")) {
 			this.setHp(-1);
-			System.out.println("Vous avez pris un piege.");
-			System.out.println("vous avez " + this.getHp()+ " pv");
+			return true;
 		}
+		return false;
+		
+	}
+	
+	public boolean mort() throws HpException {
 		if(this.getHp()==0) {
 			this.setI((int) (Math.random()*(15)));
 			this.setJ((int) (Math.random()*(15)));
 			this.setHp(10);
 			this.nbMorts += 1;
-			System.out.println("Vous vous reveillez ailleurs ...");
+			return true;
 		}
+		return false;
 	}
 	
 	public String AffichageMap() {
@@ -211,16 +211,9 @@ public class Personnage {
  			for(int j = 0; j<15;j++) {
  				r += mapJoueur[i][j];
  			}
- 			r+="\n";
+ 			r+="w";
  		}
  		return r;
 		
 	}
-	
-	public String toString() {
- 		String r = "";
- 		r+= this.getName() + " a "+ this.getHp()+" points de vie.";
- 		return r;
- 	}
-	
 }

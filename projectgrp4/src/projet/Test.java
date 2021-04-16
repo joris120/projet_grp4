@@ -7,7 +7,7 @@ public class Test {
 	public static void main(String[] args) throws HpException {
 		Donjon d = new Donjon();
  		System.out.println(d);
- 		Personnage p = new Personnage("test");
+ 		Personnage p = new Personnage();
  		
  		
  		Scanner sc = new Scanner(System.in);
@@ -18,7 +18,6 @@ public class Test {
  			String k = sc.nextLine();
  			if(k.equals("z")||k.equals("q")||k.equals("s")||k.equals("d")) {
  				p.deplacer(k);
- 				p.piege();
  			}else if(k.equals("u")) {
  	 			p.utiliser();
  	 		}else if(k.equals("r")) {

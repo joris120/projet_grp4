@@ -20,18 +20,37 @@ public static void main (String [] args) throws UnknownHostException, IOExceptio
 		
 		in = new BufferedReader (new InputStreamReader(socket.getInputStream()));
 		out = new PrintStream(socket.getOutputStream());
+		
+		
 
 	
 		Scanner sc = new Scanner(System.in);
-		while(!(p.getGagne())) {
-		 	System.out.println(in.readLine());
-		 	System.out.println("A votre tour :");
-		 	String k = sc.nextLine();
-		 	out.println(k);
-		 	
-			sc.close();
-			socket.close();
-
-	}
-
+		
+		while(true) {
+			System.out.println("a votre tour : ");
+			String k = sc.nextLine();
+			out.println(k);
+			
+			String message = in.readLine();
+			
+			String map = "";
+			for(int i = 0; i<message.length();i++) {
+				if(message.substring(i, i+1).equals("w")) {
+					map += "\n";
+				}else {
+					map += message.charAt(i);
+				}
+			}
+			
+			System.out.println(map);
+			
+			
+			
+			
+			
+			
+		}
+		
+		
+		}
 }

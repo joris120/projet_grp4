@@ -26,24 +26,34 @@ public class ServeurJeu extends Thread {
 			out = new PrintStream(socket.getOutputStream());
 			Personnage p = new Personnage();
 			
-			
 			out.println(p.AffichageMap());
-
-			String k = in.readLine();
-			if(k.equals("z")||k.equals("q")||k.equals("s")||k.equals("d")) {
-		 		p.deplacer(k);
-		 		p.piege();
-		 		}else if(k.equals("u")) {
-		 	 		p.utiliser();
-		 	 	}else if(k.equals("r")) {
-		 	 		p.ramasser();
-		 	 	}	
-		 	}
+			String message = in.readLine();
 			
-			socket.close();	
-			} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			while(!(p.getGagne())) {
+			 	if(message.equals("z")||message.equals("q")||message.equals("s")||message.equals("d")) {
+			 		p.deplacer(message);
+			 		if(p.IlYAUnMur()) {
+			 			out.print("Il y a un mur");
+			 		}
+			 		if(p.Piege()) {
+			 			out.println("il y a un piege");
+			 		}
+			 		}else if(message.equals("u")) {
+			 	 		p.utiliser();
+			 	 	}else if(message.equals("r")) {
+			 	 		p.ramasser();
+			 	 	}
+			 	out.println(p.AffichageMap());
+				}
+				out.println("Gagne !");
+				socket.close();	
+			}catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (HpException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
+				
 		}
 	}
