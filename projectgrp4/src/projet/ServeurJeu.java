@@ -26,12 +26,20 @@ public class ServeurJeu extends Thread {
 			out = new PrintStream(socket.getOutputStream());
 			Personnage p = new Personnage();
 			
-			out.println(p.AffichageMap());
-			String message = in.readLine();
 			
-			while(!(p.getGagne())) {
+			
+			
+			
+			out.println(p.AffichageMap());
+			
+			while(true) {
+				String message = in.readLine();
 			 	if(message.equals("z")||message.equals("q")||message.equals("s")||message.equals("d")) {
-			 		p.deplacer(message);
+			 		if(p.deplacementPossible(message)) {
+			 			p.deplacer(message);
+			 		}else {
+			 			out.println("La sortie n'est pas par ici ...");
+			 		}
 			 		if(p.IlYAUnMur()) {
 			 			out.print("Il y a un mur");
 			 		}
@@ -43,10 +51,10 @@ public class ServeurJeu extends Thread {
 			 	 	}else if(message.equals("r")) {
 			 	 		p.ramasser();
 			 	 	}
-			 	out.println(p.AffichageMap());
+			 		out.println(p.AffichageMap());
 				}
-				out.println("Gagne !");
-				socket.close();	
+				
+				
 			}catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

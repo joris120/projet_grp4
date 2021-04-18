@@ -109,53 +109,68 @@ public class Personnage {
 	}
 	
 	public void deplacer(String r) {
-			int k = this.getI();
-			int l = this.getJ();
 			boolean b = true;
 			while(b) {
 				if(r.equals("z")) {
-					if(i == 0) {
-						System.err.println("deplacement impossible");
+					if(this.getI() == 0) {
 						b = false;
 					}else {
 						i-=1;
 						b = false;
 					}
 				}else if(r.equals("q")) {
-					if(j == 0) {
-						System.err.println("deplacement impossible");
+					if(this.getJ() == 0) {
 						b = false;
 					} else {
 						j-=1;
 						b = false;
 					}
 				}else if(r.equals("s")) {
-					if(i == 14) {
-						System.err.println("deplacement impossible");
+					if(this.getI() == 14) {
 						b = false;
 					}else {
 						i+=1;
 						b = false;
 					}
 				} else {
-					if(j == 14) {
-						System.err.println("deplacement impossible");
+					if(this.getI() == 14) {
 						b = false;
 					} else {
 						j += 1;
 						b = false;
 					}
 				}
-				
 			}
-				
-			
-			if(d.getMap()[this.getI()][this.getJ()].equals("V")) {
-				this.setGagne(true);
-				System.out.println("Vous avez gagne !");
-				System.out.println("Vous etes mort "+this.nbMorts+" fois.");
+	}
+	
+	public void isWin() {
+		if(d.getMap()[this.getI()][this.getJ()].equals("V")) {
+			this.setGagne(true);
+		}
+	}
+	
+	public boolean deplacementPossible(String r) {
+		boolean b = true;
+		while(b) {
+			if(r.equals("z")) {
+				if(this.getI() == 0) {
+					b = false;
+				}
+			}else if(r.equals("q")) {
+				if(this.getJ() == 0) {
+					b = false;
+				} 
+			}else if(r.equals("s")) {
+				if(this.getI() == 14) {
+					b = false;
+				}
+			} else {
+				if(this.getJ() == 14) {
+					b = false;
+				} 
 			}
-		
+		}
+		return b;
 	}
 	
 	public boolean IlYAUnMur() {
