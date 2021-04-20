@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ServeurJeu extends Thread {
@@ -15,6 +16,9 @@ public class ServeurJeu extends Thread {
 	
 	public ServeurJeu(Socket s){
 		this.socket = s;
+	}
+	public ServeurJeu(ArrayList<Socket> s) {
+		s.add(this.socket);
 	}
 	
 	public void run() {
