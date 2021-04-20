@@ -13,16 +13,19 @@ public class Test {
  		Scanner sc = new Scanner(System.in);
  	
  		while(!(p.getGagne())) {
- 			System.out.println(p.AffichageMap());
+ 			System.out.println(p.Lecture(p.AffichageMap()));
  			System.out.println("A votre tour :");
  			String k = sc.nextLine();
- 			if(k.equals("z")||k.equals("q")||k.equals("s")||k.equals("d")) {
- 				p.deplacer(k);
- 			}else if(k.equals("u")) {
- 	 			p.utiliser();
- 	 		}else if(k.equals("r")) {
- 	 			p.ramasser();
- 	 		}
+ 			if(p.deplacementPossible(k)) {
+ 				if(k.equals("z")||k.equals("q")||k.equals("s")||k.equals("d")) {
+ 	 				p.deplacer(k);
+ 	 			}else if(k.equals("u")) {
+ 	 	 			p.utiliser();
+ 	 	 		}else if(k.equals("r")) {
+ 	 	 			p.ramasser();
+ 	 	 		}
+ 			}
+ 			
  			
  		}
 	}

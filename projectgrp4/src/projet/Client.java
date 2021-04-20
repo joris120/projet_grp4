@@ -40,22 +40,23 @@ public static void main (String [] args) throws UnknownHostException, IOExceptio
 		}
 		
 		System.out.println(map);
-		
+		System.out.println("A vous de jouer : ");
 		while(true) {
-			System.out.println("A vous de jouer : ");
+			
 			out.println(sc.nextLine());
 			
-			String message2 = in.readLine();
+			
+			String message2 = in.readLine(); //map
 			
 			String map2 = "";
 			for(int i = 0; i<message2.length();i++) {
 				if(message2.substring(i, i+1).equals("w")) {
-					map += "\n";
+					map2 += "\n";
 				}else {
-					map += message2.charAt(i);
+					map2 += message2.charAt(i);
 				}
 			}
-			System.out.println(map2);	
+			System.out.println(map2);
 		}
 		
 		}

@@ -109,6 +109,8 @@ public class Personnage {
 	}
 	
 	public void deplacer(String r) {
+			int k = this.getI();
+			int l = this.getJ();
 			boolean b = true;
 			while(b) {
 				if(r.equals("z")) {
@@ -141,7 +143,13 @@ public class Personnage {
 					}
 				}
 			}
+			if(d.getMap()[this.getI()][this.getJ()].equals("#")) {
+				this.getMap()[this.getI()][this.getJ()]="#";
+				i =k;
+				j=l;
+			}
 	}
+	
 	
 	public void isWin() {
 		if(d.getMap()[this.getI()][this.getJ()].equals("V")) {
@@ -151,7 +159,7 @@ public class Personnage {
 	
 	public boolean deplacementPossible(String r) {
 		boolean b = true;
-		while(b) {
+		
 			if(r.equals("z")) {
 				if(this.getI() == 0) {
 					b = false;
@@ -168,22 +176,12 @@ public class Personnage {
 				if(this.getJ() == 14) {
 					b = false;
 				} 
-			}
+			
 		}
 		return b;
 	}
 	
-	public boolean IlYAUnMur() {
-		int k = this.getI();
-		int l = this.getJ();
-		if(d.getMap()[this.getI()][this.getJ()].equals("#")) {
-			this.getMap()[this.getI()][this.getJ()]="#";
-			i =k;
-			j=l;
-			return true;
-		}
-		return false;
-	}
+	
 	
 	public boolean Piege() throws HpException {
 		if(d.getMap()[this.getI()][this.getJ()].equals("~")) {
@@ -230,5 +228,16 @@ public class Personnage {
  		}
  		return r;
 		
+	}
+	public String Lecture(String message2) {
+		String map2 = "";
+		for(int i = 0; i<message2.length();i++) {
+			if(message2.substring(i, i+1).equals("w")) {
+				map2 += "\n";
+			}else {
+				map2 += message2.charAt(i);
+			}
+		}
+		return map2;
 	}
 }

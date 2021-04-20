@@ -37,21 +37,35 @@ public class ServeurJeu extends Thread {
 			 	if(message.equals("z")||message.equals("q")||message.equals("s")||message.equals("d")) {
 			 		if(p.deplacementPossible(message)) {
 			 			p.deplacer(message);
+			 			if(p.Piege()) {
+				 			out.println(p.AffichageMap()+"\nIl y a un piege. wVous avez maintenant "+p.getHp()+" points de vie. wwA votre tour : ");
+				 		}else {
+				 			out.println(p.AffichageMap()+"wwA votre tour : ");
+				 		}
 			 		}else {
-			 			out.println("La sortie n'est pas par ici ...");
+			 			out.println(p.AffichageMap()+"\nLa sortie n'est pas par ici ...wwA votre tour : ");
 			 		}
-			 		if(p.IlYAUnMur()) {
-			 			out.print("Il y a un mur");
-			 		}
-			 		if(p.Piege()) {
-			 			out.println("il y a un piege");
-			 		}
+			 		
 			 		}else if(message.equals("u")) {
-			 	 		p.utiliser();
+			 			if(p.getInventaire()==0) {
+			 				out.println(p.AffichageMap()+"\nVous n'avez pas de potion en stock.wwA votre tour : ");
+			 			} else {
+			 				p.utiliser();
+			 				out.println(p.AffichageMap()+"\nPotion utilisee. \n Vous avez "+p.getHp()+" points de viewwA votre tour : ");
+			 			}
 			 	 	}else if(message.equals("r")) {
-			 	 		p.ramasser();
+			 	 		if(p.getInventaire() < 5 && p.getMap()[p.getI()][p.getJ()].equals("P")) {
+			 	 			p.ramasser();
+				 	 		out.println(p.AffichageMap()+"\nPotion ramasseewwA votre tour : ");
+			 	 		} else {
+			 	 			if(p.getInventaire() >=5) {
+			 					out.println(p.AffichageMap()+"\nL'inventaire est déjà plein.wwA votre tour : ");
+			 				} else {
+			 					out.println(p.AffichageMap()+"\nPas d'objet à ramasser.wwA votre tour : ");
+			 				}
+			 	 		}
+			 	 		
 			 	 	}
-			 		out.println(p.AffichageMap());
 				}
 				
 				
