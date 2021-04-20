@@ -68,7 +68,7 @@ public class Personnage {
 	}
 	
 	public void ramasser() {
-		if(inventaire < 5 && d.getMap()[i][j].equals("P")) {
+		if(inventaire < 5 && d.getMap()[this.getI()][this.getJ()].equals("P")) {
 			inventaire += 1;
 			for(int i = 0; i< 1; i++) {
 	 			for(int j = 0; j < 1; j++) {
