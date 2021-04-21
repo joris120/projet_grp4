@@ -12,18 +12,15 @@ public class ServeurMultiJeu extends Thread {
 	private ArrayList<PrintStream> out;
 	private ArrayList<BufferedReader> in;
 	
-	public ServeurMultiJeu(Socket s) {
+	public ServeurMultiJeu(Socket s) throws IOException {
 		socket.add(s);
+		in.add(new BufferedReader(new InputStreamReader(s.getInputStream())));
+		out.add(new PrintStream (new PrintStream(s.getOutputStream())));
 	}
 	
 	public void run() {
 		try {
-			for(int i = 0; i < socket.size();i++) {
-				in.add(new BufferedReader(new InputStreamReader(socket.get(i).getInputStream())));
-			}
-			for(int i = 0; i < socket.size();i++) {
-				out.add(new PrintStream (new PrintStream(socket.get(i).getOutputStream())));
-			}
+			
 			Donjon donjon = new Donjon();
 			
 			Personnage p = new Personnage();
