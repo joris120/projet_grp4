@@ -12,8 +12,8 @@ public class ServeurMultiJeu extends Thread {
 	private ArrayList<PrintStream> out;
 	private ArrayList<BufferedReader> in;
 	
-	public ServeurMultiJeu(ArrayList<Socket> s) {
-		this.socket = s;
+	public ServeurMultiJeu(Socket s) {
+		socket.add(s);
 	}
 	
 	public void run() {

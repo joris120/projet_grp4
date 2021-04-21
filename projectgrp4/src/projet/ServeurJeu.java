@@ -64,7 +64,7 @@ public class ServeurJeu extends Thread {
 				 	 	}else if(message.equals("r")) {
 				 	 		if(p.getInventaire() < 5) {
 				 	 			p.ramasser();
-					 	 		out.println(p.AffichageMap()+"wPotion ramasseewVoues avez "+p.getInventaire()+ " potionswwA votre tour : ");
+					 	 		out.println(p.AffichageMap()+"wPotion ramasseewVous avez "+p.getInventaire()+ " potion(s)wwA votre tour : ");
 				 	 		} else {
 				 	 			if(p.getInventaire() >=5) {
 				 					out.println(p.AffichageMap()+"wL'inventaire est déjà plein.wwA votre tour : ");

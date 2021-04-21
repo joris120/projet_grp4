@@ -30,6 +30,7 @@ private static int PORT = 6113;
 			
 				//création du nouveau thread en passant le socket comme parametre
 				ServeurJeu donjon = new ServeurJeu(client);
+				//ServeurMultiJeu donjon = new ServeurMultiJeu(client);
 				//démarrage 
 				donjon.start();
 				

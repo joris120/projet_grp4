@@ -23,7 +23,7 @@ public static void main (String [] args) throws UnknownHostException, IOExceptio
 		
 		
 		System.out.println("Bienvenue.");
-		System.out.println("Les commandes sont les suivantes : \n -aller a gauche : q \n -aller a droite : d \n -aller en haut : z \n -aller en bas : s \n -rammasser une potion : r \n -utiliser une potion : u \n");
+		System.out.println("Les commandes sont les suivantes : \n -aller a gauche : q \n -aller a droite : d \n -aller en haut : z \n -aller en bas : s \n -ramasser une potion : r \n -utiliser une potion : u \n");
 		System.out.println("Pressez la touche entree pour chaque validation. \n");
 		System.out.println("La partie commence : \n");
 
