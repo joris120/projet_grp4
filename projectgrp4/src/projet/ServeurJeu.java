@@ -17,9 +17,6 @@ public class ServeurJeu extends Thread {
 	public ServeurJeu(Socket s){
 		this.socket = s;
 	}
-	public ServeurJeu(ArrayList<Socket> s) {
-		s.add(this.socket);
-	}
 	
 	public void run() {
 		try {
@@ -28,6 +25,7 @@ public class ServeurJeu extends Thread {
 		          );
 			
 			out = new PrintStream(socket.getOutputStream());
+			
 			Personnage p = new Personnage();
 			
 			
@@ -66,7 +64,7 @@ public class ServeurJeu extends Thread {
 				 	 	}else if(message.equals("r")) {
 				 	 		if(p.getInventaire() < 5) {
 				 	 			p.ramasser();
-					 	 		out.println(p.AffichageMap()+"wPotion ramasseewwA votre tour : ");
+					 	 		out.println(p.AffichageMap()+"wPotion ramasseewVoues avez "+p.getInventaire()+ " potionswwA votre tour : ");
 				 	 		} else {
 				 	 			if(p.getInventaire() >=5) {
 				 					out.println(p.AffichageMap()+"wL'inventaire est déjà plein.wwA votre tour : ");
